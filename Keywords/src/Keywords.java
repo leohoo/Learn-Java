@@ -21,6 +21,10 @@ public class Keywords {
 
 		Number n;
 		n = Number.Two;
+		
+		if( n instanceof Number){
+			System.out.println("n is a Number.");
+		}
 	}
 
 }
