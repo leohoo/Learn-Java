@@ -12,6 +12,12 @@ public class ReferenceVariables {
 		account2.owner = "Barrack Obama";
 
 		System.out.println(account.owner);
+		
+		deposit(account, 100);
+		System.out.println(account.owner + " has " + account.balance + " Dollars.");
 	}
 
+	static void deposit(BankAccount account, int amount){
+		account.deposit(amount);
+	}
 }
