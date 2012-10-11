@@ -7,6 +7,7 @@ public class Vessle extends Transport {
 	}
 
 	public Vessle() {
+		super();
 	}
 
 	@Override

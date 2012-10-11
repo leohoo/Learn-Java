@@ -28,6 +28,14 @@ public class Test {
 		
 		Vessle vessle = new Vessle();
 		vessle.move();
+		
+		Transport t = new TeslaRoadster("Tesla 001");
+		if(t instanceof IElectric){
+			System.out.println(t + " is an IElectric.");
+		}
+		
+		ChargingStation station = new ChargingStation();
+		station.charge((IElectric)t);
 	}
 
 }

@@ -8,6 +8,8 @@ public class Car extends Vehicle {
 	protected Light frontLight, backLight;
 	protected Engine engine;
 	
+	public Car(){}
+	
 	public Car(String name){
 		super(name);
 		
@@ -21,7 +23,7 @@ public class Car extends Vehicle {
 	}
 	
 	@Override
-	void move(){
+	public void move(){
 		frontLight.turnOn();
 		backLight.turnOn();
 		engine.start();
