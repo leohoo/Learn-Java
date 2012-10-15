@@ -1,3 +1,4 @@
+package performanceTest;
 public class Test {
 	int value;
 
@@ -52,6 +53,30 @@ public class Test {
 		System.out.println("method1 took " + l + " ms, result was "
 				+ t.getValue());
 
+		//
+		l = System.currentTimeMillis();
+		t.reset();
+		for (i = 1; i < 100000000; i++) {
+			try {
+				t.method1(i);
+			} catch (Exception e) {
+
+			}
+		}
+
+		l = System.currentTimeMillis() - l;
+		System.out.println("method1 with try block took " + l + " ms, result was "
+				+ t.getValue());
+
+		l = System.currentTimeMillis();
+		t.reset();
+		for (i = 1; i < 100000000; i++) {
+			t.method1(i);
+		}
+		l = System.currentTimeMillis() - l;
+		System.out.println("method1 took " + l + " ms, result was "
+				+ t.getValue());
+		
 		l = System.currentTimeMillis();
 		t.reset();
 		for (i = 1; i < 100000000; i++) {
