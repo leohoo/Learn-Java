@@ -36,6 +36,16 @@ public class Test {
 		
 		ChargingStation station = new ChargingStation();
 		station.charge((IElectric)t);
+		
+		IElectric e = new ElectricTruck();
+		
+		Object o = e;
+		
+		if(o instanceof Transport){
+			System.out.println("o is a Transport.....");
+		}
+		
+		station.charge(e);
 	}
 
 }

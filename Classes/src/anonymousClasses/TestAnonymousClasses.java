@@ -21,6 +21,8 @@ public class TestAnonymousClasses {
 		};
 		
 		car.move();
+		String name = car.getClass().getName();
+		System.out.println(name);
 	}
 
 }
