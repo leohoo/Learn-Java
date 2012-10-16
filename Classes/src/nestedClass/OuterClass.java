@@ -10,6 +10,7 @@ import access_test.AccessTest;
 public class OuterClass {
 
 	class InnerClass{
+		private int i;
 		private void f(){
 			System.out.println(AccessTest.getMethodName());			
 		}
@@ -46,7 +47,9 @@ public class OuterClass {
 		
 		InnerClass a = t.new InnerClass();
 		a.bar();
+
 		a.f();
+		a.i = 5;
 		
 		StaticInnerClass s = new StaticInnerClass();
 	}
