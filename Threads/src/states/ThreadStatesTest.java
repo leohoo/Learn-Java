@@ -3,76 +3,72 @@ package states;
 public class ThreadStatesTest {
 
 	static final String lock = "";
+	static Thread main;
 
-	static class SleepThread extends Thread{
-		long time;
-		SleepThread(long ms){
-			time = ms;
-			start();
-		}
-		
-		public void run(){
-			try {
-				Thread.sleep(time);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
 	/**
 	 * @param args
-	 * @throws InterruptedException 
+	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) throws InterruptedException {
+		main = Thread.currentThread();
+
 		Thread t1 = new Thread() {
 			public void run() {
 				synchronized (lock) {
 					try {
+						lock.notify();
+
 						// timed waiting
-						Thread.sleep(150);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					
-					// runnable
-					for(int i=0; i<1000000; i++){
-						System.out.print("");
-					}
-					
-					Thread t = new SleepThread(100);
-					try {
+						lock.wait(100);
+
+						// runnable
+						long t = System.currentTimeMillis();
+						while (System.currentTimeMillis() - t < 100)
+							;
+						
 						// waiting
-						t.join();
+						lock.wait();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					
 				}
 			}
 		};
 
 		// new
+		System.out.print("new => ");
 		System.out.println(t1.getState());
 
-		synchronized(lock){
+		synchronized (lock) {
 			t1.start();
-			Thread.sleep(100);
-			
+			Thread.sleep(10);
+
 			// blocked
+			System.out.print("blocked => ");
 			System.out.println(t1.getState());
+			lock.wait();
+		}
+
+		System.out.print("timed waiting => ");
+		System.out.println(t1.getState());
+
+		synchronized (lock) {
+			lock.notify();
 		}
 		
-		Thread.sleep(100);
+		System.out.print("runnable => ");
 		System.out.println(t1.getState());
 
-		Thread.sleep(100);
+		Thread.sleep(150);
+		System.out.print("waiting => ");
 		System.out.println(t1.getState());
 
-		Thread.sleep(100);
-		System.out.println(t1.getState());
-		
+		synchronized (lock) {
+			lock.notify();
+		}
 		t1.join();
+
+		System.out.print("terminated => ");
 		System.out.println(t1.getState());
 	}
 }
