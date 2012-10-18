@@ -22,6 +22,10 @@ public class ThreadStatesTest {
 						lock.wait(100);
 
 						// runnable
+//						int x = 0;
+//						for(int i=0; i<100000000; i++){
+//							x = x & 0x1111;
+//						}
 						long t = System.currentTimeMillis();
 						while (System.currentTimeMillis() - t < 100)
 							;
@@ -56,6 +60,7 @@ public class ThreadStatesTest {
 			lock.notify();
 		}
 		
+		Thread.sleep(10);
 		System.out.print("runnable => ");
 		System.out.println(t1.getState());
 
