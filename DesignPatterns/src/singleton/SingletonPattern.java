@@ -12,7 +12,7 @@ public class SingletonPattern {
 		
 		assert(s == s2);
 
-		s = new Singleton();	// this should not compile.
+//		s = new Singleton();	// this should not compile.
 	}
 
 }

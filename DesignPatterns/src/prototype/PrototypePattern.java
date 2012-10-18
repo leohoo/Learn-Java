@@ -22,7 +22,23 @@ abstract class Prototype implements Cloneable {
 class PrototypeImpl extends Prototype {
     private short x;
  
-    /**
+    String name;
+    
+    void setName(String name){
+    	this.name = name;
+    }
+    
+    
+    @Override
+	public PrototypeImpl clone() throws CloneNotSupportedException {
+		String newName = new String(name);
+		PrototypeImpl p = (PrototypeImpl)super.clone();
+		p.setName(newName);
+		return p;
+	}
+
+
+	/**
      * Constructor
      * @param X
      */
