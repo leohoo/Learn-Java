@@ -142,7 +142,8 @@ class LblDisplay extends JLabel {
  
 class MediatorDemo extends JFrame implements ActionListener {
  
-    IMediator med = new Mediator();
+//    IMediator med = new Mediator();
+    IMediator med = new JapaneseMediator();
  
     MediatorDemo() {
         JPanel p = new JPanel();
