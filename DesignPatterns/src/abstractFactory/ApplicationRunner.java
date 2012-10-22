@@ -53,6 +53,6 @@ public class ApplicationRunner {
     }
 
 	private static int readFromConfigFile(String osType) {
-		return 1;
+		return 0;
 	}
 }
