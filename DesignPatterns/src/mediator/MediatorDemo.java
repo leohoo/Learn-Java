@@ -143,13 +143,13 @@ class LblDisplay extends JLabel {
 class MediatorDemo extends JFrame implements ActionListener {
  
 //    IMediator med = new Mediator();
-    IMediator med = new JapaneseMediator();
+    IMediator med = new Mediator();
  
     MediatorDemo() {
         JPanel p = new JPanel();
         p.add(new BtnView(this, med));
         p.add(new BtnBook(this, med));
-        p.add(new BtnSearch(this, med));
+        p.add(new RedBtnSearch(this, med));
         getContentPane().add(new LblDisplay(med), "North");
         getContentPane().add(p, "South");
         setSize(400, 200);
