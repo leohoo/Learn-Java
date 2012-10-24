@@ -2,6 +2,7 @@ package momento;
 
 import java.util.List;
 import java.util.ArrayList;
+
 class Originator {
     private String state;
     // The class could also contain additional data that is not part of the
@@ -49,5 +50,7 @@ class MomentoSample {
         originator.set("State4");
  
         originator.restoreFromMemento(savedStates.get(1));   
+        originator.restoreFromMemento(savedStates.get(0));   
+        
     }
 }
